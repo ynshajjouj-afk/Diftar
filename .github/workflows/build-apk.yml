@@ -15,7 +15,7 @@ jobs:
 
       - name: Extract Android project
         run: |
-          unzip -q DaftarAlajwiba-GitHub-icon.zip
+          unzip -q DaftarAlajwiba-PlayStore.zip
           cd DaftarAlajwiba-GitHub
           echo "PROJECT_DIR=$PWD" >> $GITHUB_ENV
 
