@@ -30,12 +30,12 @@ jobs:
         with:
           gradle-version: '8.13'
 
-      - name: - name: Build AAB
+      - name: Build AAB
         working-directory: DaftarAlajwiba-GitHub
-        run: run: gradle bundleRelease --no-daemon
+        run: gradle bundleRelease --no-daemon
 
-      - name: Upload APK
+      - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
-          name: name: daftar-alajwiba-aab
-          path: path: DaftarAlajwiba-GitHub/app/build/outputs/bundle/release/app-release.aab
+          name: daftar-alajwiba-aab
+          path: DaftarAlajwiba-GitHub/app/build/outputs/bundle/release/app-release.aab
