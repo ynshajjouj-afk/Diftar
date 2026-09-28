@@ -35,22 +35,15 @@ jobs:
 
       - name: Build AAB
         working-directory: DaftarAlajwiba-GitHub
+        env:
+          PLAY_KEYSTORE_PATH: ${{ github.workspace }}/DaftarAlajwiba-GitHub/daftar-upload-key.jks
+          PLAY_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          PLAY_KEY_ALIAS: daftar
+          PLAY_KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         run: gradle bundleRelease --no-daemon
-
-      - name: Sign AAB
-        working-directory: DaftarAlajwiba-GitHub
-        run: |
-          jarsigner \
-            -keystore daftar-upload-key.jks \
-            -storetype PKCS12 \
-            -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
-            -keypass "${{ secrets.KEYSTORE_PASSWORD }}" \
-            -signedjar app-release-signed.aab \
-            app/build/outputs/bundle/release/app-release.aab \
-            daftar
 
       - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
           name: daftar-alajwiba-aab
-          path: DaftarAlajwiba-GitHub/app-release-signed.aab
+          path: DaftarAlajwiba-GitHub/app/build/outputs/bundle/release/app-release.aab
