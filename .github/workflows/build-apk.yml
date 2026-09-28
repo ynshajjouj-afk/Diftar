@@ -31,7 +31,7 @@ jobs:
 
       - name: Decode keystore
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > DaftarAlajwiba-GitHub/daftar-upload-key.jks
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > DaftarAlajwiba-GitHub/daftar-upload-key.p12
 
       - name: Build AAB
         working-directory: DaftarAlajwiba-GitHub
